@@ -9,7 +9,7 @@ def combination(taille=4):
     alea = [random.choice(color_accepted) for index in range(taille)]
     print(alea)
     
-#Demande au joueur sa proposition de combinaison de couleur
+#Demander au joueur sa proposition de combinaison de couleurs
 
 def player_proposition():
         proposition = input("Enter your proposition")
