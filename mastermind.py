@@ -32,3 +32,26 @@ def player_proposition():
     
     # Si tout est valide, retourner la proposition
     return proposition_list
+
+#comparaison des combinaisons 
+def combination_comparison(combination, proposition): 
+    color_well_placed = 0
+    color_badly_placed = 0  #Compteur pour les couleurs bien et mal placées
+
+    secret_copy = combination.copy()
+    proposition_copy = proposition.copy()
+
+    #vérifier les couleurs à la bonne position 
+    for i in range(len(combination)):
+        if proposition_copy[i] == secret_copy[i]:
+            color_well_placed += 1 
+            secret_copy[i] = None #couleur trouvée
+
+    #vérifier les couleurs à la mauvaise position
+    for i in range(len(proposition)):
+        if proposition_copy[i] != secret_copy[i] and proposition_copy[i] in secret_copy:
+            color_badly_placed += 1 
+            secret_copy[secret_copy.index(proposition_copy[i])] =None 
+           
+#retourne les couleurs
+    return color_well_placed, color_badly_placed  
