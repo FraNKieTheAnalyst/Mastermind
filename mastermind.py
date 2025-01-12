@@ -89,3 +89,7 @@ def mastermind():
             break
     else:
         print("Dommage, vous avez épuisé vos tentatives ! La combinaison secrète était:", combination) 
+
+# Lancement du jeu
+if __name__ == "__main__":
+    mastermind()
