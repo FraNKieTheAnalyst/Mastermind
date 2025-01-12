@@ -56,17 +56,36 @@ def combination_comparison(combination, proposition):
 #retourne les couleurs
     return color_well_placed, color_badly_placed  
 
-# Appel des fonctions pour test 
-combination = generate_combination()  # Par défaut, une combinaison de taille 4
-print("La combinaison secrète générée est :", combination)
 
-
-proposition = player_proposition()
-if proposition:
-    print("Votre proposition est :", proposition)
-
-color_well_placed, color_badly_placed = combination_comparison(combination, proposition)
-
-# Affichage des résultats
-print(f"Couleurs bien placées : {color_well_placed}")
-print(f"Couleurs mal placées : {color_badly_placed}") 
+# Initialisation du jeu, gestion des tours et affichage des résultats
+def mastermind():
+    # Initialisation du jeu
+    combination = generate_combination()
+    print("Bienvenue dans le jeu de Mastermind !")
+    print("Vous avez 10 tentatives pour deviner la combinaison secrète.")
+    print("La combinaison sécrète a été généré")
+    # Nombre de tentatives
+    Tentatives = 10
+    
+    # Boucle des tentatives
+    for tentative in range(1, Tentatives + 1):
+        print(f"\nTentative {tentative}/{Tentatives}")
+        proposition = player_proposition()
+        
+        # Si la proposition est invalide, redemander
+        if proposition is None:
+            continue
+        
+        # Comparer la proposition avec la combinaison
+        color_well_placed, color_badly_placed = combination_comparison(combination, proposition)
+        
+        # Affichage des résultats de la tentative
+        print(f"Couleurs bien placées : {color_well_placed}")
+        print(f"Couleurs mal placées : {color_badly_placed}")
+        
+        # Si le joueur a trouvé la bonne combinaison, on arrête le jeu
+        if color_well_placed == len(combination):
+            print("Félicitations ! Vous avez trouvé la combinaison secrète !")
+            break
+    else:
+        print("Dommage, vous avez épuisé vos tentatives ! La combinaison secrète était:", combination) 
