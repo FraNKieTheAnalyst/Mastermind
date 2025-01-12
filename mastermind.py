@@ -55,3 +55,18 @@ def combination_comparison(combination, proposition):
            
 #retourne les couleurs
     return color_well_placed, color_badly_placed  
+
+# Appel des fonctions pour test 
+combination = generate_combination()  # Par défaut, une combinaison de taille 4
+print("La combinaison secrète générée est :", combination)
+
+
+proposition = player_proposition()
+if proposition:
+    print("Votre proposition est :", proposition)
+
+color_well_placed, color_badly_placed = combination_comparison(combination, proposition)
+
+# Affichage des résultats
+print(f"Couleurs bien placées : {color_well_placed}")
+print(f"Couleurs mal placées : {color_badly_placed}") 
